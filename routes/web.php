@@ -16,5 +16,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
 
 Route::get('/home', 'HomeController@index')->name('home');

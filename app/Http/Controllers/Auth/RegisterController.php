@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Events\Auth\UserActivationEmail;
 
 class RegisterController extends Controller
 {
@@ -82,6 +83,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         //sending mail
+        event(new UserActivationEmail($user));
 
         $this->guard()->logout();
 
