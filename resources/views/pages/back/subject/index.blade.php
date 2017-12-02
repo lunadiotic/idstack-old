@@ -12,11 +12,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Subject Data
-                    <a onclick="" class="btn btn-primary pull-right" style="margin-top: -8px;">Add Subject</a>
+                    <a href="{{ route('admin.subject.create') }}" class="btn btn-primary pull-right show-modal" style="margin-top: -8px;" title="Add Subject">Add Subject</a>
                 </div>
 
                 <div class="panel-body">
-                    <table id="subject-table" class="table table-striped">
+                    <table id="datatable" class="table table-striped">
                         <thead>
                             <tr>
                                 <th width="30">ID</th>
@@ -32,6 +32,8 @@
         </div>
     </div>
 </div>
+
+@include('pages.back.subject.modal')
 @endsection
 
 @section('scripts')
@@ -40,7 +42,7 @@
     <script src="{{ url('/') }}/assets/plugins/DataTables/js/dataTables.bootstrap.min.js"></script>
 
     <script type="text/javascript">
-        $('#subject-table').DataTable({
+        $('#datatable').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('data.subject') }}",

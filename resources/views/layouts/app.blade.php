@@ -85,7 +85,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('assets/plugins/jquery/jquery-1.12.4.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     @yield("scripts")
-    {{--  <script src="{{ asset('js/app.js') }}"></script>  --}}
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

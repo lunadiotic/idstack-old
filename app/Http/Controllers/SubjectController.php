@@ -25,7 +25,9 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        $subject = new Subject();
+        $option = Subject::pluck('subject', 'id')->all();
+        return view('pages.back.subject._create', compact('subject', 'option'));
     }
 
     /**
@@ -36,7 +38,11 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'subject' => 'required|min:3'
+        ]);
+        $request['slug'] = str_slug($request->subject, '-');
+        return Subject::create($request->all());
     }
 
     /**
