@@ -21,3 +21,12 @@ Route::get('auth/activate/resend', 'Auth\ActivationResendController@showResendFo
 Route::post('auth/activate/resend', 'Auth\ActivationResendController@resend');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
+});
+
+Route::group(['prefix' => 'data'], function () {
+    Route::get('subject', 'SubjectController@subjectData')->name('data.subject');
+});
