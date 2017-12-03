@@ -17,7 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->increments('id');
             $table->integer('parent_id')->nullable();
             $table->string('slug');
-            $table->string('subject');
+            $table->string('subject')->unique();
             $table->timestamps();
         });
     }

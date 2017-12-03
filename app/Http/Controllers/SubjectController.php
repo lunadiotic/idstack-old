@@ -39,7 +39,7 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'subject' => 'required|min:3'
+            'subject' => 'required|min:3|unique:subjects'
         ]);
         $request['slug'] = str_slug($request->subject, '-');
         return Subject::create($request->all());
@@ -78,7 +78,7 @@ class SubjectController extends Controller
     public function update(Request $request, Subject $subject)
     {
         $this->validate($request, [
-            'subject' => 'required|min:3'
+            'subject' => 'required|min:3|unique:subjects,subject,' . $subject->id,
         ]);
 
         $request['slug'] = str_slug($request->subject, '-');
