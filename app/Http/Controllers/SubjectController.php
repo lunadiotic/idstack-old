@@ -64,7 +64,8 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        //
+        $option = Subject::pluck('subject', 'id')->all();
+        return view('pages.back.subject._create', compact('subject', 'option'));
     }
 
     /**
@@ -76,7 +77,18 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        //
+        $this->validate($request, [
+            'subject' => 'required|min:3'
+        ]);
+
+        $request['slug'] = str_slug($request->subject, '-');
+        $subject->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Update Successful' 
+        ]);
+
     }
 
     /**
@@ -93,6 +105,15 @@ class SubjectController extends Controller
     public function subjectData()
     {
         $subject = Subject::all();
-        return Datatables::of($subject)->make(true);
+        return Datatables::of($subject)
+                ->addColumn('action', function ($subject) {
+                    return view('layouts.back.partials._action', [
+                        'model' => $subject,
+                        'edit_url' => route('admin.subject.edit', $subject->id),
+                        'show_url' => route('admin.subject.show', $subject->id),
+                        'delete_url' => route('admin.subject.destroy', $subject->id),
+                    ]);
+                })
+                ->make(true);
     }
 }

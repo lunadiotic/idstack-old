@@ -1,6 +1,6 @@
 // == Ajax CRUD == //
 // Event Handler Click Button show Modal
- $('.show-modal').click(function(event) {
+$('body').on('click', '.show-modal', function (event) {
     event.preventDefault();
  
      // create this object from click event
@@ -25,6 +25,11 @@
 
     $('#modal').modal('show');
  });
+
+ //Prevent enter presskey
+$('#modal').on('keypress', ":input:not(textarea)", function (event) {
+    return event.keyCode != 13;
+});
 
 
  // Event Handler Form Submit Button clicked

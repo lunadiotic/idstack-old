@@ -23,6 +23,7 @@
                                 <th>Parent_ID</th>
                                 <th>Slug</th>
                                 <th>Subject</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -51,6 +52,7 @@
                 {data: 'parent_id', name: 'parent_id'},
                 {data: 'slug', name: 'slug'},
                 {data: 'subject', name: 'subject'},
+                {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });
     </script>
