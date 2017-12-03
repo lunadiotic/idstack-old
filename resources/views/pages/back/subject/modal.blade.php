@@ -8,7 +8,7 @@
       <div id="modal-body" class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" id="modal-btn-close" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="modal-btn-save">Save changes</button>
       </div>
     </div><!-- /.modal-content -->

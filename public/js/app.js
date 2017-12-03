@@ -1,5 +1,5 @@
 // == Ajax CRUD == //
-// Event Handler Click Button show Modal
+// Event Handler Click Create Data
 $('body').on('click', '.show-modal', function (event) {
     event.preventDefault();
  
@@ -25,6 +25,36 @@ $('body').on('click', '.show-modal', function (event) {
 
     $('#modal').modal('show');
  });
+
+// Event Handler Click Button to show data
+$('body').on('click', '.show-data-modal', function (event) {
+    event.preventDefault();
+
+    // create this object from click event
+    var me = $(this);
+    //get url active value by click
+    var url = me.attr('href');
+    //get title
+    var title = me.attr('title');
+
+    //change modal title
+    $('#modal-title').text(title);
+    // Hide Save Button
+    $("#modal-btn-save").hide();
+
+    $.ajax({
+        url: url,
+        dataType: 'html',
+        success: function (response) { //show form from html response _create.blade.php
+            $('#modal-body').html(response); //put in #modal-body id
+            $('#modal-btn-close').click(function() { // show the save button when clicked close
+                $("#modal-btn-save").show();
+            });
+        }
+    });
+
+    $('#modal').modal('show');
+});
 
  //Prevent enter presskey
 $('#modal').on('keypress', ":input:not(textarea)", function (event) {

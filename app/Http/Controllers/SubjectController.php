@@ -53,7 +53,7 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        //
+        return view('pages.back.subject._show', compact('subject'));
     }
 
     /**
