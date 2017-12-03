@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a href="{{ route('admin.subject.index') }}" class="btn btn-primary btn-xs">Subject</a>
+                    <a href="{{ route('admin.software.index') }}" class="btn btn-primary btn-xs">Software</a>
                 </div>
             </div>
         </div>
