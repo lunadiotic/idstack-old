@@ -24,11 +24,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
+    Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
     Route::resource('software', 'SoftwareController', ['names' => 'admin.software']);
+    Route::resource('level', 'LevelController', ['names' => 'admin.level']);
 });
 
 Route::group(['prefix' => 'data'], function () {
     Route::get('subject', 'SubjectController@subjectData')->name('data.subject');
     Route::get('software', 'SoftwareController@softwareData')->name('data.software');
+    Route::get('level', 'LevelController@levelData')->name('data.level');
 });
