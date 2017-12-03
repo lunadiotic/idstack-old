@@ -35,6 +35,7 @@
 </div>
 
 @include('pages.back.subject.modal')
+@include('pages.back.subject.modalconfirm')
 @endsection
 
 @section('scripts')

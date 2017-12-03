@@ -69,3 +69,34 @@ $('#modal').on('keypress', ":input:not(textarea)", function (event) {
         }
     });
 });
+
+
+// Event handler show confirm modal to delete
+$('body').on('click', '.show-modal-confirm', function (event) {
+    event.preventDefault();
+
+    var me = $(this),
+        action = me.attr('href');
+
+    $('#modal-confirm-body form').attr('action', action);
+    $('#modal-confirm-body p').html("Are you sure you want to delete this data ?");
+    $('#modal-confirm').modal('show');
+});
+
+// Event handler to delete data when confirmed
+$('#modal-confirm-btn-remove').click(function (event) {
+    event.preventDefault();
+
+    var form = $('#modal-confirm-body form'),
+        url = form.attr('action');
+
+    $.ajax({
+        url: url,
+        method: 'DELETE',
+        data: form.serialize(),
+        success: function (data) {
+            $('#datatable').DataTable().ajax.reload();
+            $('#modal-confirm').modal('hide');
+        }
+    });
+});
