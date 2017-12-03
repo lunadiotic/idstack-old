@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+     <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     @yield("styles")
 </head>
 <body>
@@ -85,7 +85,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('assets/plugins/jquery/jquery-1.12.4.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     @yield("scripts")
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
