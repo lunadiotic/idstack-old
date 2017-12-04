@@ -40,4 +40,14 @@ class User extends Authenticatable
     {
         return $builder->where('email', $email)->where('activation_token', $token);
     }
+
+    /**
+     * Relationship
+     * User hasMany Courses
+     * @return void
+     */
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

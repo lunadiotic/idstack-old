@@ -17,6 +17,8 @@
                     <a href="{{ route('admin.subject.index') }}" class="btn btn-primary btn-xs">Subject</a>
                     <a href="{{ route('admin.software.index') }}" class="btn btn-primary btn-xs">Software</a>
                     <a href="{{ route('admin.level.index') }}" class="btn btn-primary btn-xs">Level</a>
+                    <br>
+                    <a href="{{ route('admin.course.index') }}" class="btn btn-primary btn-xs">Courses</a>
                 </div>
             </div>
         </div>

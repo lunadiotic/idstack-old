@@ -27,10 +27,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
     Route::resource('software', 'SoftwareController', ['names' => 'admin.software']);
     Route::resource('level', 'LevelController', ['names' => 'admin.level']);
+    Route::resource('course', 'CourseController', ['names' => 'admin.course']);
 });
 
 Route::group(['prefix' => 'data'], function () {
     Route::get('subject', 'SubjectController@subjectData')->name('data.subject');
     Route::get('software', 'SoftwareController@softwareData')->name('data.software');
     Route::get('level', 'LevelController@levelData')->name('data.level');
+    Route::get('course', 'CourseController@courseData')->name('data.course');
 });
