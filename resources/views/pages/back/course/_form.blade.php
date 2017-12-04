@@ -32,7 +32,12 @@
 
     <div class="form-group">
         <label for="" class="control-label">Subjects</label>
-        {!! Form::select('subjects[]', [''=>'']+App\Models\Subject::pluck('subject','id')->all(), null, ['class'=>'form-control js-selectize', 'multiple', 'placeholder' => 'Click Here!', 'required' => 'required']) !!}
+        {!! Form::select('subjects[]', [''=>'']+App\Models\Subject::pluck('subject','id')->all(), null, ['id' => 'subjects', 'class'=>'form-control js-selectize', 'multiple', 'placeholder' => 'Click Here!', 'required' => 'required']) !!}
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label">Software</label>
+        {!! Form::select('software[]', [''=>'']+App\Models\Software::pluck('software','id')->all(), null, ['id' => 'software', 'class'=>'form-control js-selectize', 'multiple', 'placeholder' => 'Click Here!', 'required' => 'required']) !!}
     </div>
     
 {!! Form::close() !!}

@@ -53,6 +53,7 @@ class CourseController extends Controller
 
         $course = Course::create($request->all());
         $course->subjects()->sync($request->get('subjects'));
+        $course->software()->sync($request->get('software'));
 
         return response()->json([
             'success' => true,
@@ -110,6 +111,13 @@ class CourseController extends Controller
         } else {
             // No subjects set, detach all
             $course->subjects()->detach();
+        }
+
+        if (count($request->get('software')) > 0) {
+            $course->software()->sync($request->get('software'));
+        } else {
+            // No software set, detach all
+            $course->software()->detach();
         }
 
         return response()->json([

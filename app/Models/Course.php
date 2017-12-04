@@ -27,4 +27,9 @@ class Course extends Model
     {
         return $this->belongsToMany(Subject::class);
     }
+
+    public function software()
+    {
+        return $this->belongsToMany(Software::class);
+    }
 }
