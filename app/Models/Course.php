@@ -22,4 +22,9 @@ class Course extends Model
     {
         return $this->belongsTo(Level::class);
     }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
 }

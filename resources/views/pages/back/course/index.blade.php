@@ -3,6 +3,7 @@
 @section('styles')
     {{-- dataTables --}}
     <link href="{{ url('/') }}/assets/plugins/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -43,6 +44,8 @@
     {{-- dataTables --}}
     <script src="{{ url('/') }}/assets/plugins/DataTables/js/jquery.dataTables.min.js"></script>
     <script src="{{ url('/') }}/assets/plugins/DataTables/js/dataTables.bootstrap.min.js"></script>
+    
+    <script src="{{ asset('assets/plugins/selectize/js/standalone/selectize.min.js') }}"></script>
 
     <script type="text/javascript">
         $('#datatable').DataTable({
@@ -59,4 +62,6 @@
             ]
         });
     </script>
+
+    
 @endsection

@@ -51,7 +51,8 @@ class CourseController extends Controller
 
         $request['slug'] = str_slug($request->title);
 
-        Course::create($request->all());
+        $course = Course::create($request->all());
+        $course->subjects()->sync($request->get('subjects'));
 
         return response()->json([
             'success' => true,
@@ -90,19 +91,26 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'user_id' => 'required',
             'level_id' => 'required',
-            'title' => 'required|string|min:5|unique:courses,title,' . $course->id,
+            'title' => 'required|string|min:5|unique:courses,title,' . $id,
             'desc' => 'required|min:15',
             'price' => 'required'
         ]);
 
         $request['slug'] = str_slug($request->title);
-
+        $course = Course::find($id);
         $course->update($request->all());
+
+        if (count($request->get('subjects')) > 0) {
+            $course->subjects()->sync($request->get('subjects'));
+        } else {
+            // No subjects set, detach all
+            $course->subjects()->detach();
+        }
 
         return response()->json([
             'success' => true,

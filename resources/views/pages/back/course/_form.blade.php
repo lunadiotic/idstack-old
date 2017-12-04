@@ -27,7 +27,28 @@
 
     <div class="form-group">
         <label for="" class="control-label">Price</label>
-        {!! Form::text('price', null, ['class' => 'form-control', 'id' => 'price', 'autofocus']) !!}
+        {!! Form::text('price', null, ['class' => 'form-control', 'id' => 'price']) !!}
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label">Subjects</label>
+        {!! Form::select('subjects[]', [''=>'']+App\Models\Subject::pluck('subject','id')->all(), null, ['class'=>'form-control js-selectize', 'multiple', 'placeholder' => 'Click Here!', 'required' => 'required']) !!}
     </div>
     
 {!! Form::close() !!}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.js-selectize').selectize({
+        plugins: ['remove_button'],
+        delimiter: ',',
+        persist: false,
+        create: function(input) {
+            return {
+                value: input,
+                text: input
+            }
+        }
+        });     
+    });
+</script>
