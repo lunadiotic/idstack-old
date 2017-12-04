@@ -27,7 +27,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $course = new Course();
+        $user = User::pluck('name', 'id');
+        $level = Level::pluck('level', 'id');
+        return view('pages.back.course._form', compact('course', 'user', 'level'));
     }
 
     /**
@@ -38,7 +41,22 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'user_id' => 'required',
+            'level_id' => 'required',
+            'title' => 'required|string|min:5|unique:courses',
+            'desc' => 'required|min:15',
+            'price' => 'required'
+        ]);
+
+        $request['slug'] = str_slug($request->title);
+
+        Course::create($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Created Successful'
+        ]);
     }
 
     /**
@@ -60,7 +78,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        $user = User::pluck('name', 'id');
+        $level = Level::pluck('level', 'id');
+        return view('pages.back.course._form', compact('course', 'user', 'level'));
     }
 
     /**
@@ -72,7 +92,22 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $this->validate($request, [
+            'user_id' => 'required',
+            'level_id' => 'required',
+            'title' => 'required|string|min:5|unique:courses,title,' . $course->id,
+            'desc' => 'required|min:15',
+            'price' => 'required'
+        ]);
+
+        $request['slug'] = str_slug($request->title);
+
+        $course->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Updated Successful'
+        ]);
     }
 
     /**
@@ -83,7 +118,11 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Deleted Successful'
+        ]);
     }
 
     public function courseData()
