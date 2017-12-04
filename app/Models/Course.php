@@ -8,6 +8,11 @@ class Course extends Model
 {
     protected $fillable = ['user_id', 'level_id', 'slug', 'title', 'desc', 'price'];
 
+    public function detail()
+    {
+        return $this->hasMany(CourseDetail::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

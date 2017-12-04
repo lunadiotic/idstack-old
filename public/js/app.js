@@ -2,6 +2,7 @@
 // Event Handler Click Create Data
 $('body').on('click', '.show-modal', function (event) {
     event.preventDefault();
+    $("#modal-btn-save").show();
  
      // create this object from click event
      var me = $(this);
@@ -9,6 +10,8 @@ $('body').on('click', '.show-modal', function (event) {
      var url = me.attr('href');
      //get title
      var title = me.attr('title');
+     //get id
+     var id = me.attr('id');
 
      //change modal title
      $('#modal-title').text(title);
@@ -20,6 +23,8 @@ $('body').on('click', '.show-modal', function (event) {
         dataType: 'html',
         success: function(response) { //show form from html response _create.blade.php
             $('#modal-body').html(response); //put in #modal-body id
+            //insert id
+            $('#data_id').val(id);
        }
     });
 
@@ -127,6 +132,7 @@ $('#modal-confirm-btn-remove').click(function (event) {
         success: function (data) {
             $('#datatable').DataTable().ajax.reload();
             $('#modal-confirm').modal('hide');
+            $('#modal').modal('hide');
         }
     });
 });
