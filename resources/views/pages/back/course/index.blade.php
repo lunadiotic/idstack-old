@@ -46,6 +46,7 @@
     <script src="{{ url('/') }}/assets/plugins/DataTables/js/dataTables.bootstrap.min.js"></script>
     
     <script src="{{ asset('assets/plugins/selectize/js/standalone/selectize.min.js') }}"></script>
+    <script src="{{ asset('vendor/laravel-filemanager/js/lfm.js') }}"></script>
 
     <script type="text/javascript">
         $('#datatable').DataTable({

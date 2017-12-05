@@ -39,21 +39,38 @@
         <label for="" class="control-label">Software</label>
         {!! Form::select('software[]', [''=>'']+App\Models\Software::pluck('software','id')->all(), null, ['id' => 'software', 'class'=>'form-control js-selectize', 'multiple', 'placeholder' => 'Click Here!', 'required' => 'required']) !!}
     </div>
+
+    <div class="form-group">
+        <label for="" class="control-label">Featured Image</label>
+        <div class="input-group">
+            {!! Form::text('image', null, ['id' => 'thumbnail', 'class' => 'form-control', 'readonly' => 'readonly']) !!}
+            <span class="input-group-btn">
+            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-default">
+                <i class="fa fa-cloud-upload"></i> Choose
+            </a>
+            </span>
+        </div>
+        @if (isset($course) && $course->image !== '')
+        <img src="{{ $course->image }}" id="holder" style="margin-top:15px;max-height:254px;max-width: 152px;">
+        @endif
+        <img id="holder" style="margin-top:15px;max-height:254px;max-width: 152px;">
+    </div>
     
 {!! Form::close() !!}
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('.js-selectize').selectize({
-        plugins: ['remove_button'],
-        delimiter: ',',
-        persist: false,
-        create: function(input) {
-            return {
-                value: input,
-                text: input
+            plugins: ['remove_button'],
+            delimiter: ',',
+            persist: false,
+            create: function(input) {
+                return {
+                    value: input,
+                    text: input
+                }
             }
-        }
-        });     
+        });
+        $('#lfm').filemanager('image', {prefix: '/filemanager'});
     });
 </script>
