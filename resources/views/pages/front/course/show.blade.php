@@ -4,6 +4,14 @@
     Belajar {{ $course->course->title }} | | {{ $course->title }}
 @endsection
 
+@section('styles')
+    <style>
+    .col-center{
+        margin:0 auto;
+    }
+</style>
+@endsection
+
 @section('content')
     <!-- start Main Wrapper -->
     <div class="main-wrapper scrollspy-container">
@@ -47,11 +55,28 @@
                                 <div class="watching-content-wrapper">
 
                                     <div class="flex-video vimeo mb-40"> 
-                                        {!! $course->iframe !!}
+                                        @guest
+                                        <div class="center-block">
+                                            <h2 style="text-align: center;margin-top: 190px;">Mau Nonton ? Gabung dulu ya, Sob :D</h2>
+                                        </div>
+                                        @else
+                                            {!! $course->iframe !!}
+                                        @endguest
                                     </div>
-                                    
                                     <div class="watching-pager-wrapper">
                                         <ul class="watching-pager mb-30 clearfix">
+                                            @guest
+                                                <li class="prev">
+                                                    <a href="{{ route('login') }}">
+                                                        <h5 class="btn btn-primary">Masuk</h5>
+                                                    </a>
+                                                </li>
+                                                <li class="next">
+                                                    <a href="{{ route('login') }}">
+                                                        <h5 class="btn btn-success">Daftar</h5>
+                                                    </a>
+                                                </li>
+                                            @else
                                             <li class="prev">
                                                 @if($prev)
                                                     <a href="{{ route('series.detail.show', [$related->slug,$prev->slug]) }}">
@@ -68,6 +93,7 @@
                                                     </a>
                                                 @endif
                                             </li>
+                                            @endguest
                                         </ul>
                                     </div>
                                     
@@ -106,9 +132,9 @@
                                         <h5>{{ $course->course->title }}</h5>
                                         <ul class="playlist">
                                             @foreach($related->detail as $playlist)
-                                                <li class="clearfix">
+                                                <li class="{{ $playlist->id == $course->id ? 'playing' : '' }} clearfix">
                                                     <a href="{{ route('series.detail.show', [$related->slug,$playlist->slug]) }}">
-                                                        <span class="icon"><i class="fa fa-play-circle"></i></span>
+                                                        <span class="icon"><i class="fa {{ $playlist->id == $course->id ? 'fa-pause' : 'fa-play-circle' }}"></i></span>
                                                         {{ $playlist->title }}
                                                     </a>
                                                 </li>

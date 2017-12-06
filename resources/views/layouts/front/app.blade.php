@@ -37,6 +37,8 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+	@yield('styles')
 	
 </head>
 
@@ -84,23 +86,32 @@
 							</div>
 							
 							<div class="col-sm-6">
-								
-								<div class="top-header-widget pull-right">
-									<a href="{{ route('login') }}" class="btn-ajax-login" data-toggle="">
-										<i class="ion-log-in mr-3"></i> Sign-in
-									</a>
-								</div>
-								<div class="top-header-widget pull-right">
-									<a href="{{ route('register') }}" class="btn-ajax-register">
-										<i class="ion-person-add mr-3"></i> Sign-up
-									</a>
-								</div>
-								<div class="top-header-widget pull-right hidden-xs">
-									<a href="#">
-										<i class="fa fa-comments mr-3"></i> Support
-									</a>
-								</div>
-								
+								@guest
+									<div class="top-header-widget pull-right">
+										<a href="{{ route('login') }}" >
+											<i class="ion-log-in mr-3"></i> Sign-in
+										</a>
+									</div>
+									<div class="top-header-widget pull-right">
+										<a href="{{ route('register') }}">
+											<i class="ion-person-add mr-3"></i> Sign-up
+										</a>
+									</div>
+                       			@else
+									<div class="top-header-widget pull-right">
+										<a 
+											href="{{ route('logout') }}"
+											onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+										>
+											{{ Auth::user()->name }}
+											<i class="ion-log-out mr-3"></i> Sign-out
+										</a>
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+									</div>
+								@endguest
 							
 							</div>
 							
@@ -233,8 +244,16 @@
 						
 						<div class="col-xs-12 col-sm-6">
 							<ul class="secondary-footer-menu clearfix">
-								<li><a href="{{ route('login') }}">Sign-in</a></li>
-								<li><a href="{{ route('register') }}">Sign-up</a></li>
+								@guest
+									<li><a href="{{ route('login') }}">Sign-in</a></li>
+									<li><a href="{{ route('register') }}">Sign-up</a></li>
+								@else
+									<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();">Sign-out</a></li>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+									</form>
+								@endguest
 							</ul>
 						</div>
 						

@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -69,7 +69,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'active' => false,
-            'activation_token' => str_random(255)
+            'activation_token' => str_random(255),
+            'role' => 'member',
+            'x' => $data['password']
         ]);
     }
 

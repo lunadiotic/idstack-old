@@ -1,7 +1,7 @@
 @component('mail::message')
-# Activation your account
+# Aktifkan Akun Anda
 
-Thanks for signing up, please activate your account.
+Terima kasih telah bergabung {{ $user->name }}, agar akun dapat Anda gunakan, mohon aktivasi akun Anda dengan mengklik tombol di bawah ini.
 
 @component('mail::button', ['url' => route('auth.activate', [
                                     'token' => $user->activation_token,
@@ -12,6 +12,6 @@ Thanks for signing up, please activate your account.
     Activate
 @endcomponent
 
-Thanks,<br>
+Salam Kami,<br>
 {{ config('app.name') }}
 @endcomponent
