@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
@@ -21,9 +19,14 @@ Route::get('auth/activate/resend', 'Auth\ActivationResendController@showResendFo
 Route::post('auth/activate/resend', 'Auth\ActivationResendController@resend');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/series', 'HomeController@series')->name('series');
+Route::get('/series/{id}', 'HomeController@serieDetail')->name('series.detail');
+Route::get('/series/{id}/episode/{ep}', 'HomeController@serieDetailShow')->name('series.detail.show');
+Route::get('/about', 'HomeController@about')->name('idstack.about');
 
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'HomeController@admin')->name('admin');
     Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
     Route::resource('software', 'SoftwareController', ['names' => 'admin.software']);
     Route::resource('level', 'LevelController', ['names' => 'admin.level']);

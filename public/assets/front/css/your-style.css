@@ -1,0 +1,131 @@
+/*------------------------------------------------------------------
+Project:        Edutue
+Author:         Crenoveative
+URL:            http://crenoveative.com
+Created:        18/10/2016
+-------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------
+* 
+*	Add your own style
+*
+* -------------------------------------------------------------------*/
+
+#top-header {
+    -webkit-transition: all .15s ease-in-out 0;
+    -moz-transition: all .15s ease-in-out 0;
+    -ms-transition: all .15s ease-in-out 0;
+    -o-transition: all .15s ease-in-out 0;
+    transition: all .15s ease-in-out 0;
+    opacity: 1;
+    background: #EEE;
+    color: #777;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.navbar-nav > li > a {
+    line-height: 70px;
+    font-weight: 550;
+    font-size: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+    -webkit-transition: all .3s ease-in-out 0;
+    -moz-transition: all .3s ease-in-out 0;
+    -ms-transition: all .3s ease-in-out 0;
+    -o-transition: all .3s ease-in-out 0;
+    transition: all .3s ease-in-out 0;
+    color: #929292;
+    letter-spacing: 1px;
+}
+
+.navbar-nav li ul {
+    z-index: 9999;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 190px;
+    display: none;
+    background-color: #FFF;
+    border: 1px solid #C7C7C7;
+    border-top: 2px solid #0D7CC9;
+    background: #FFF
+}
+
+.navbar-nav li ul li a {
+    border-bottom: 1px solid #C7C7C7;
+    display: block;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: unset;
+    -webkit-transition: all .2s ease-in-out 0;
+    -moz-transition: all .2s ease-in-out 0;
+    -ms-transition: all .2s ease-in-out 0;
+    -o-transition: all .2s ease-in-out 0;
+    transition: all .2s ease-in-out 0;
+    font-weight: 400;
+    color: #959595;
+    letter-spacing: 1px
+}
+
+.xGridLex p {
+    text-align: justify;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Montserrat,Helvetica,Arial,sans-serif;
+}
+
+.course-item-content h3 {
+    font-size: 20px;
+    font-weight: unset;
+    color: #666;
+    line-height: 28px;
+    margin: 0;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    line-height: 42px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.section-title p {
+    font-family: Montserrat,Helvetica,Arial,sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 30px;
+    margin: 34px 0 45px
+}
+
+.row.xBread li {
+    font-size: 13px;
+}
+
+.breadcrumb-wrapper .hot-line {
+    text-align: right;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.row.xWatchDesc {
+    font-size: 1rem;
+}
