@@ -270,33 +270,36 @@
 	<!-- end Container Wrapper -->
  
  
-<!-- start Back To Top -->
-<div id="back-to-top">
-   <a href="#"><i class="ion-ios-arrow-up"></i></a>
-</div>
-<!-- end Back To Top -->
+	<!-- start Back To Top -->
+	<div id="back-to-top">
+	<a href="#"><i class="ion-ios-arrow-up"></i></a>
+	</div>
+	<!-- end Back To Top -->
 
-<!-- JS -->
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery-migrate-1.4.1.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/SmoothScroll.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/spin.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.introLoader.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/typed.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/placeholderTypewriter.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.slicknav.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/select2.full.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/ion.rangeSlider.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/readmore.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/slick.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/bootstrap-rating.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.nicescroll.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/creditly.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/bootstrap-modalmanager.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/bootstrap-modal.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/assets/front/js/customs.js"></script>
+	<!-- JS -->
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery-migrate-1.4.1.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.waypoints.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/SmoothScroll.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/spin.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.introLoader.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/typed.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/placeholderTypewriter.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.slicknav.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/select2.full.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/ion.rangeSlider.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/readmore.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/slick.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/bootstrap-rating.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/jquery.nicescroll.min.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/creditly.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/bootstrap-modalmanager.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/customs.js"></script>
+
+	@yield('scripts')
+</body>
 </html>

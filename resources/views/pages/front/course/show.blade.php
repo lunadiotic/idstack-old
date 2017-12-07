@@ -118,7 +118,20 @@
 
                                 </div>
 
+                                <div class="review-content">
+
+                                    <ul class="review-list">
+													
+                                        <li class="clearfix">
+                                            <div id="disqus_thread"></div>
+                                        </li>
+                                        
+                                    </ul>
+												
+                                </div>
+
                             </div>
+                            
                             
                         </div>
 
@@ -152,11 +165,11 @@
                                     
                                     <a href="#" class="teacher-item-sm clearfix">
                                         <div class="image">
-                                            <img src="{{ asset('assets/front/images/man/03.jpg') }}" alt="Man" />
+                                            <img src="{{ $related->user->image }}" alt="Man" />
                                         </div>
                                         <div class="content">
                                             <h3>{{ $related->user->name }}</h3>
-                                            <p class="labeling">Instruktur IDStack</p>
+                                            <p class="labeling">{{ $related->user->title }}</p>
                                         </div>
                                     </a>
                                     
@@ -177,4 +190,16 @@
         
     </div>
     <!-- end Main Wrapper -->
+@endsection
+
+@section('scripts')
+    <script>
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://idstack.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 @endsection
