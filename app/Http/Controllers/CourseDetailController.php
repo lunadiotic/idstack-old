@@ -59,9 +59,10 @@ class CourseDetailController extends Controller
      * @param  \App\Models\CourseDetail  $courseDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(CourseDetail $courseDetail)
+    public function show($id)
     {
-        dd($courseDetail);
+        $course = CourseDetail::findOrFail($id);
+        return view('pages.back.course.detail._show', compact('course'));
     }
 
     /**

@@ -151,6 +151,9 @@ class CourseController extends Controller
             ->addColumn('level', function ($course) {
                 return $course->level->level;
             })
+            ->addColumn('detail', function ($course) {
+                return '<a href="'. route('admin.course.lesson', $course->id) .'" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a>';
+            })
             ->addColumn('action', function ($course) {
                 return view('layouts.back.partials._action', [
                     'model' => $course,
@@ -159,6 +162,28 @@ class CourseController extends Controller
                     'delete_url' => route('admin.course.destroy', $course->id),
                 ]);
             })
-            ->make(true);
+            ->rawColumns(['detail', 'action'])->make(true);
+    }
+
+    public function detail($id)
+    {
+        $course = Course::findOrFail($id);
+        return view('pages.back.course.detail.index', compact('course'));
+    }
+
+    public function courseDetailData($id)
+    {
+        $course = Course::findOrFail($id);
+        return Datatables::of($course->detail)
+            ->addColumn('course', function ($course) {
+                return $course->course->title;
+            })
+            ->addColumn('action', function ($course) {
+                return '
+                    <a href="' .route('admin.course.detail.show', $course->id). '" class="btn btn-info btn-xs show-data-modal" title="Show Data"><i class="glyphicon glyphicon-eye-open"></i>Show</a>
+                    <a href="' .route('admin.course.detail.edit', $course->id). '" class="btn btn-primary btn-xs show-modal edit" title="Edit Data" id="' . $course->course->id . '"><i class="glyphicon glyphicon-edit"></i>Edit</a>
+                    <a href="' .route('admin.course.detail.destroy', $course->id). '" class="btn btn-danger btn-xs show-modal-confirm"><i class="glyphicon glyphicon-trash" title="Delete Data"></i>Delete</a>
+                    ';
+            })->rawColumns(['action'])->make(true);
     }
 }

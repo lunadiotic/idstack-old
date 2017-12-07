@@ -1,28 +1,51 @@
-<div class="row">
-    <a href="{{ route('admin.course.detail.create') }}" class="btn btn-primary show-modal" id="{{ $course->id }}">Add Content</a>
-</div>
-<br>
-<div class="row">
-    <div class="panel-group" id="accordion">
-    @if($course->detail->count())
-        @foreach($course->detail as $row)
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$row->id}}">
-                        {{$row->title}}</a>
-                    </h4>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <td>{{ $course->id }}</td>
+    </tr>
+    <tr>
+        <th>Instructor</th>
+        <td>{{ $course->user->name }}</td>
+    </tr>
+    <tr>
+        <th>Level</th>
+        <td>{{ $course->level->level }}</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td>{{ $course->title }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{!! $course->desc !!}</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>{{ $course->price }}</td>
+    </tr>
+    <tr>
+        <th>Subjects</th>
+        <td>
+            <ul>
+                @foreach($course->subjects as $row)
+                    <li>{{ $row->subject }}</li>
+                @endforeach
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Software</th>
+        <td>
+            <ul>
+                @foreach($course->software as $row)
+                    <li>{{ $row->software }}</li>
+                @endforeach
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Featured Image</th>
+        <td><img src="{{ $course->image }}" id="holder" style="margin-top:15px;max-height:254px;max-width: 152px;"></td>
+    </tr>
+</table>
 
-                    <a href="{{ route('admin.course.detail.destroy', $row->id) }}" class="btn btn-danger pull-right btn-xs show-modal-confirm" style="margin-top: -22px;" title="Delete">Delete</a>
-                    <a href="{{ route('admin.course.detail.edit', $row->id) }}" class="btn btn-primary pull-right btn-xs show-modal edit" style="margin-top: -22px;" title="Edit" id="{{ $course->id }}">Edit</a>
-                </div>
-                <div id="collapse{{$row->id}}" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        {!! $row->desc !!}
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    @endif
-    </div>
-</div>
