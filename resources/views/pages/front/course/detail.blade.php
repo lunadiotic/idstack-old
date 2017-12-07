@@ -49,7 +49,7 @@
                         <li>
                             <div class="meta-teacher clearfix">
                                 <div class="image">
-                                    <img src="{{ asset('assets/front/images/man/03.jpg') }}" alt="Images" />
+                                    <img src="{{ $course->user->image }}" alt="Images" />
                                 </div>
                                 <div class="content">
                                     <span class="text-muted mt-3 block">Instructor</span>
@@ -263,17 +263,16 @@
                                                     <div class="col-xs-12 col-sm-3 col-md-2">
                                                     
                                                         <div class="image">
-                                                            <img src="{{ asset('assets/front/images/man/03.jpg') }}" alt="Image" />
+                                                            <img src="{{ $course->user->image }}" alt="Image" />
                                                         </div>
                                                         
                                                         <div class="clear"></div>
                                                         
                                                         <ul class="user-action">
                                                             
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                                            <li><a href="{{ $course->user->facebook ?? '#' }}" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                            <li><a href="{{ $course->user->twitter ?? '#' }}" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                            <li><a href="{{ $course->user->github ?? '#' }}" data-toggle="tooltip" data-placement="top" title="GitHub"><i class="fa fa-github"></i></a></li>
                                                             
                                                         </ul>
                                                                 
@@ -284,9 +283,9 @@
                                                         <div class="content">
                                                                 
                                                             <h3><a href="#">{{ $course->user->name }}</a></h3>
-                                                            <p class="labeling">Instruktur IDStack</p>
+                                                            <p class="labeling">{{ $course->user->title }}</p>
                                                             
-                                                            <p class="short-info">Senior debug developer...</p>
+                                                            <p class="short-info">{!! $course->user->desc !!}</p>
                                                             
                                                             <a href="#" class="btn btn-primary btn-inverse btn-sm">More about him</a>
                                                             
@@ -315,42 +314,44 @@
                         
                                             <div class="GridLex-grid-noGutter-equalHeight">
 
-                                                @foreach($related as $row)
-                                                    <div class="GridLex-col-4_mdd-6_xs-6_xss-12">
-                                                        <div class="course-item">
-                                                            <a href="#">
-                                                                <div class="course-item-image">
-                                                                    <img src="{{ $row->image }}" alt="Image" class="img-responsive" />
-                                                                </div>
-                                                                <div class="course-item-top clearfix">
-                                                                    <div class="course-item-instructor">
-                                                                        <div class="image">
-                                                                            <img src="{{ asset('assets/front/images/man/03.jpg') }}" alt="Image" class="img-circle" />
+                                                @if($relates)
+                                                    @foreach($relates as $row)
+                                                        <div class="GridLex-col-4_mdd-6_xs-6_xss-12">
+                                                            <div class="course-item">
+                                                                <a href="#">
+                                                                    <div class="course-item-image">
+                                                                        <img src="{{ $row->image }}" alt="Image" class="img-responsive" />
+                                                                    </div>
+                                                                    <div class="course-item-top clearfix">
+                                                                        <div class="course-item-instructor">
+                                                                            <div class="image">
+                                                                                <img src="{{ $row->user->image }}" alt="Image" class="img-circle" />
+                                                                            </div>
+                                                                            <span>{{ $row->user->name }} </span>
                                                                         </div>
-                                                                        <span>{{ $row->user->name }} </span>
-                                                                    </div>
-                                                                    <div class="course-item-price bg-danger">
-                                                                        {{ $row->price }}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="course-item-content">
-                                                                    <div class="rating-wrapper">
-                                                                        {{--  <div class="rating-item">
-                                                                            <input type="hidden" class="rating" data-filled="fa fa-star" data-empty="fa fa-star-o" data-fractions="2" data-readonly value="3.5"/>
+                                                                        <div class="course-item-price bg-danger">
+                                                                            {{ $row->price }}
                                                                         </div>
-                                                                        <span> (7 review)</span>  --}}
                                                                     </div>
-                                                                    <h3 class="text-primary">{{ $row->title }}</h3>
-                                                                </div>
-                                                                <div class="course-item-bottom clearfix">
-                                                                    <div><i class="fa fa-folder-open-o"></i><span class="block"> {{ $course->subjects()->first()->subject }}</span></div>
-                                                                    <div><i class="fa fa-pencil-square-o"></i><span class="block"> {{ $course->detail->count() }} Lessons</span></div>
-                                                                    <div><i class="fa fa-check-square-o"></i><span class="block"> {{ $course->level->level }}</span></div>
-                                                                </div>
-                                                            </a>
+                                                                    <div class="course-item-content">
+                                                                        <div class="rating-wrapper">
+                                                                            {{--  <div class="rating-item">
+                                                                                <input type="hidden" class="rating" data-filled="fa fa-star" data-empty="fa fa-star-o" data-fractions="2" data-readonly value="3.5"/>
+                                                                            </div>
+                                                                            <span> (7 review)</span>  --}}
+                                                                        </div>
+                                                                        <h3 class="text-primary">{{ $row->title }}</h3>
+                                                                    </div>
+                                                                    <div class="course-item-bottom clearfix">
+                                                                        <div><i class="fa fa-folder-open-o"></i><span class="block"> {{ $course->subjects()->first()->subject }}</span></div>
+                                                                        <div><i class="fa fa-pencil-square-o"></i><span class="block"> {{ $course->detail->count() }} Lessons</span></div>
+                                                                        <div><i class="fa fa-check-square-o"></i><span class="block"> {{ $course->level->level }}</span></div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
+                                                    @endforeach
+                                                @endif
                                                 
                                             </div>
                                             

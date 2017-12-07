@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <label for="" class="control-label">Description</label>
-        {!! Form::textarea('desc', null, ['class' => 'form-control', 'id' => 'desc', 'cols'=>"30", 'rows'=>"10"]) !!}
+        {!! Form::textarea('desc', null, ['class' => 'form-control', 'id' => 'desc', 'required' => 'required', 'cols'=>"30", 'rows'=>"10"]) !!}
     </div>
 
     <div class="form-group">
@@ -80,7 +80,7 @@
 {!! Form::close() !!}
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function () {        
         $('#lfm').filemanager('image', {prefix: '/filemanager'});
     });
 </script>

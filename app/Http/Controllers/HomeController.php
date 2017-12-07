@@ -61,9 +61,15 @@ class HomeController extends Controller
         $subject = $course->subjects->first();
         $related = Course::whereHas('subjects', function ($q) use ($subject) {
             $q->where('subject_id', $subject->id);
-        })->get()->random(3);
+        })->get();
 
-        return view('pages.front.course.detail', compact('course', 'related'));
+        if ($related->count() > 2) {
+            $relates = $related->random(3);
+        } else {
+            $relates = null;
+        }
+
+        return view('pages.front.course.detail', compact('course', 'relates'));
     }
 
     /**

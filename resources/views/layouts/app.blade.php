@@ -13,6 +13,7 @@
     <!-- Styles -->
      <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     @yield("styles")
+    <script src="{{ url('/') }}/assets/plugins/tinymce/tinymce.min.js"></script>
 </head>
 <body>
     <div id="app">

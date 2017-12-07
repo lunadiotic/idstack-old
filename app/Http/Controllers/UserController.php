@@ -29,7 +29,7 @@ class UserController extends Controller
         $role = [
             'admin' => 'Admin',
             'instructor' => 'Instructor',
-            'member' => 'member'
+            'member' => 'Member'
         ];
         return view('pages.back.user._form', compact('user', 'role'));
     }
@@ -85,7 +85,7 @@ class UserController extends Controller
         $role = [
             'admin' => 'Admin',
             'instructor' => 'Instructor',
-            'member' => 'member'
+            'member' => 'Member'
         ];
         return view('pages.back.user._form', compact('user', 'role'));
     }
