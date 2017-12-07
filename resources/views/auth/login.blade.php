@@ -56,12 +56,16 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    Lupa Password ?
                                 </a>
 
-                                <a class="btn btn-link" href="{{ route('auth.activate.resend') }}">
-                                    Resend Activation Email
+                                <a class="btn btn-link" href="{{ route('register') }}">
+                                    Belum Punya akun ? Daftar di sini
                                 </a>
+
+                                {{--  <a class="btn btn-link" href="{{ route('auth.activate.resend') }}">
+                                    Resend Activation Email
+                                </a>  --}}
                             </div>
                         </div>
                     </form>

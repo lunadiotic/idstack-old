@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('level', 'LevelController', ['names' => 'admin.level']);
     Route::resource('course', 'CourseController', ['names' => 'admin.course']);
     Route::resource('course/detail', 'CourseDetailController', ['names' => 'admin.course.detail']);
+    Route::resource('user', 'UserController', ['names' => 'admin.user']);
 });
 
 Route::group(['prefix' => 'data'], function () {
@@ -39,4 +40,5 @@ Route::group(['prefix' => 'data'], function () {
     Route::get('software', 'SoftwareController@softwareData')->name('data.software');
     Route::get('level', 'LevelController@levelData')->name('data.level');
     Route::get('course', 'CourseController@courseData')->name('data.course');
+    Route::get('user', 'UserController@userData')->name('data.user');
 });
