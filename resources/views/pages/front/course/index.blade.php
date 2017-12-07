@@ -259,7 +259,7 @@
                                                                 <div class="col-xss-7 col-xs-8 col-sm-8 col-md-6">
                                                                     <div class="course-instructor">
                                                                         <div class="image">
-                                                                            <img src="{{ asset('/assets/front/images/man/03.jpg') }}" alt="Image" class="img-circle" />
+                                                                            <img src="{{ $course->user->image }}" alt="Image" class="img-circle" />
                                                                         </div>
                                                                         <span>{{ $course->user->name }}</span>
                                                                         

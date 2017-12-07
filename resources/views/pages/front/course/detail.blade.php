@@ -197,7 +197,9 @@
                                         
                                         </div>
 
-                                        <p>{!! $course->desc !!}</p>
+                                        <div id="description">
+                                            {!! $course->desc !!}
+                                        </div>
                                         
                                     </div>
 
@@ -237,7 +239,7 @@
                                                     
                                                     <div class="content">
                                                     
-                                                        <p>{!! str_limit($lesson->desc, 300) !!}</p>
+                                                        <p>{!! str_limit($lesson->desc, 200) !!}</p>
 
                                                     </div>
                                                 

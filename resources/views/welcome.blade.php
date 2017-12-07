@@ -36,7 +36,7 @@
 												</div>
 												
 												<div class="content">
-													Lebih dari {{ number_format($courses->count()) }} seri
+													Lebih dari {{ number_format($courses->count()) }} seri yang tersedia
 												</div>
 												
 											</div>
@@ -52,7 +52,7 @@
 												</div>
 												
 												<div class="content">
-													Terdapat 9 peserta
+													Terdapat {{ App\Models\User::where('role', 'member')->count() }} peserta yang bergabung
 												</div>
 												
 											</div>
@@ -127,7 +127,7 @@
                                                 <div class="course-item-top clearfix">
                                                     <div class="course-item-instructor">
                                                         <div class="image">
-                                                            <img src="{{ url('/') }}/assets/front/images/testimonial/01.jpg" alt="Image" class="img-circle" />
+                                                            <img src="{{ $course->user->image }}" alt="Image" class="img-circle" />
                                                         </div>
                                                         <span>{{ ucwords($course->user->name) }} </span>
                                                     </div>
