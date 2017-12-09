@@ -28,8 +28,8 @@ class CourseController extends Controller
     public function create()
     {
         $course = new Course();
-        $user = User::pluck('name', 'id');
-        $level = Level::pluck('level', 'id');
+        $user = User::where('role', 'instructor')->pluck('name', 'id');
+        $level = Level::orderBy('id')->pluck('level', 'id');
         return view('pages.back.course._form', compact('course', 'user', 'level'));
     }
 
@@ -80,8 +80,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $user = User::pluck('name', 'id');
-        $level = Level::pluck('level', 'id');
+        $user = User::where('role', 'instructor')->pluck('name', 'id');
+        $level = Level::orderBy('id')->pluck('level', 'id');
         return view('pages.back.course._form', compact('course', 'user', 'level'));
     }
 

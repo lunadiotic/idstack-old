@@ -32,7 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::query();
         return view('welcome', compact('courses'));
     }
 
@@ -43,7 +43,7 @@ class HomeController extends Controller
      */
     public function series()
     {
-        $courses = Course::paginate(5);
+        $courses = Course::orderBy('id', 'desc')->paginate(5);
         $subject = Subject::all();
         $software = Software::all();
         return view('pages.front.course.index', compact('courses', 'subject', 'software'));

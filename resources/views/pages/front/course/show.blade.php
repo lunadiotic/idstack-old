@@ -1,7 +1,7 @@
 @extends('layouts.front.app')
 
 @section('title')
-    Belajar {{ $course->course->title }} | | {{ $course->title }}
+    Belajar {{ $course->course->title }} | {{ $course->title }}
 @endsection
 
 @section('styles')

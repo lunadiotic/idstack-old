@@ -52,7 +52,7 @@
 												</div>
 												
 												<div class="content">
-													Terdapat {{ App\Models\User::where('role', 'member')->count() }} peserta yang bergabung
+													Terdapat {{ App\Models\User::count() }} peserta yang bergabung
 												</div>
 												
 											</div>
@@ -113,7 +113,7 @@
 						<div class="GridLex-grid-noGutter-equalHeight GridLex-grid-center">
 
                             @php
-                                $courses = App\Models\Course::limit(8)->get();
+                                $courses = $courses->orderBy('id', 'desc')->take(8)->get();
                             @endphp
 
                             @if($courses->count())

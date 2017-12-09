@@ -62,7 +62,8 @@
                 {data: 'price', name: 'price'},
                 {data: 'detail', name: 'detail'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
-            ]
+            ],
+            order : [[ 0, "desc" ]]
         });
     </script>
 
@@ -107,10 +108,10 @@
 
         
 
-        $('body').on('shown.bs.modal', function () {
+        $('#modal').on('shown.bs.modal', function () {
             tinymce.init(editor_config);
         });
-        $('body').on('hidden.bs.modal', function () {
+        $('#modal').on('hidden.bs.modal', function () {
             tinymce.remove();
         });
     </script>

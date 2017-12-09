@@ -221,7 +221,7 @@
                                 Cirebon, Jawa Barat, Indonesia, 45181
                                 <br />
                                 <span class="block text-white font20 font700 line20 mt-5 mb-5">+62 899 6568 953</span>
-                                info@idstack.net
+                                idstackdeveloper@gmail.com
                             </p>
 						
 						</div>
@@ -301,5 +301,54 @@
 	<script type="text/javascript" src="{{ url('/') }}/assets/front/js/customs.js"></script>
 
 	@yield('scripts')
+
+	<script>
+!function ($) {
+
+  $(function(){
+
+    var $window = $(window)
+    var $body   = $(document.body)
+
+    var navHeight = $('.navbar').outerHeight(true) + 50
+
+    $body.scrollspy({
+      target: '.scrollspy-sidebar',
+      offset: navHeight
+    })
+
+    $window.on('load', function () {
+      $body.scrollspy('refresh')
+    })
+
+    $('.scrollspy-container [href=#]').click(function (e) {
+      e.preventDefault()
+    })
+
+    // back to top
+    setTimeout(function () {
+      var $sideBar = $('.scrollspy-sidebar')
+
+      $sideBar.affix({
+        offset: {
+          top: function () {
+            var offsetTop      = $sideBar.offset().top
+            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+            var navOuterHeight = $('.scrollspy-nav').height()
+
+            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+          }
+        , bottom: function () {
+            return (this.bottom = $('.scrollspy-footer').outerHeight(true))
+          }
+        }
+      })
+    }, 100)
+		
+  })
+
+}(window.jQuery)
+
+</script>
 </body>
 </html>

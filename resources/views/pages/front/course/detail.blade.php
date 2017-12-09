@@ -65,7 +65,7 @@
                                     <h6>
                                         @foreach($course->subjects as $row)
                                             {{ $loop->first ? '' : ', ' }}
-                                            <a href="course-detail-section-2.html" class="anchor">{{ $row->subject }}</a>
+                                            <a href="#" class="anchor">{{ $row->subject }}</a>
                                         @endforeach
                                     </h6>
                                 </div>
@@ -212,6 +212,10 @@
                                         </div>
 
                                         <div class="course-lession-wrapper-2">
+
+                                            @php
+                                                $no = 1;
+                                            @endphp
                                         
                                             @foreach($course->detail as $lesson)
                                                 <a href="{{ route('series.detail.show', [$course->slug,$lesson->slug]) }}" class="course-lession-item-2">
@@ -222,7 +226,7 @@
                                                         
                                                             <div class="col-xs-12 col-sm-6 mb-15">
                                                             
-                                                                <span class="lebal-lesson">{{ $lesson->title }}</span> 
+                                                                <span class="lebal-lesson">Lesson {{ $no++ }}</span> 
                                                                 {{--  <span class="label label-primary">Preview</span>  --}}
                                                                 
                                                             </div>
@@ -238,8 +242,9 @@
                                                     </div>
                                                     
                                                     <div class="content">
+                                                        <h5>{{ $lesson->title }}</h5>
                                                     
-                                                        <p>{!! str_limit($lesson->desc, 200) !!}</p>
+                                                        {{--  <p>{!! $lesson->desc !!}</p>  --}}
 
                                                     </div>
                                                 
@@ -320,7 +325,7 @@
                                                     @foreach($relates as $row)
                                                         <div class="GridLex-col-4_mdd-6_xs-6_xss-12">
                                                             <div class="course-item">
-                                                                <a href="#">
+                                                                <a href="{{ route('series.detail', $row->slug) }}">
                                                                     <div class="course-item-image">
                                                                         <img src="{{ $row->image }}" alt="Image" class="img-responsive" />
                                                                     </div>
