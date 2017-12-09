@@ -15,8 +15,8 @@ class CreateCourseSubjectTable extends Migration
     {
         Schema::create('course_subject', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('course_id')->unsigned();
-            $table->integer('subject_id')->unsigned();
+            $table->UnsignedInteger('course_id');
+            $table->UnsignedInteger('subject_id');
         });
     }
 

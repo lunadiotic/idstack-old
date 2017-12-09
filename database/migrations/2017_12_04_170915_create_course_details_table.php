@@ -15,7 +15,7 @@ class CreateCourseDetailsTable extends Migration
     {
         Schema::create('course_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('course_id')->unsigned();
+            $table->UnsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->string('slug');
             $table->string('title')->unique();
