@@ -1,4 +1,5 @@
 <?php
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,22 +26,30 @@ Route::get('/series/{id}/episode/{ep}', 'HomeController@serieDetailShow')->name(
 Route::get('/about', 'HomeController@about')->name('idstack.about');
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', 'HomeController@admin')->name('admin');
-    Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
-    Route::resource('software', 'SoftwareController', ['names' => 'admin.software']);
-    Route::resource('level', 'LevelController', ['names' => 'admin.level']);
-    Route::resource('course', 'CourseController', ['names' => 'admin.course']);
-    Route::get('course/{id}/detail', 'CourseController@detail')->name('admin.course.lesson');
-    Route::resource('course/detail', 'CourseDetailController', ['names' => 'admin.course.detail']);
-    Route::resource('user', 'UserController', ['names' => 'admin.user']);
-});
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', 'HomeController@admin')->name('admin');
+        Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
+        Route::resource('software', 'SoftwareController', ['names' => 'admin.software']);
+        Route::resource('level', 'LevelController', ['names' => 'admin.level']);
+        Route::resource('course', 'CourseController', ['names' => 'admin.course']);
+        Route::get('course/{id}/detail', 'CourseController@detail')->name('admin.course.lesson');
+        Route::resource('course/detail', 'CourseDetailController', ['names' => 'admin.course.detail']);
+        Route::resource('user', 'UserController', ['names' => 'admin.user']);
+    });
 
-Route::group(['prefix' => 'data'], function () {
-    Route::get('subject', 'SubjectController@subjectData')->name('data.subject');
-    Route::get('software', 'SoftwareController@softwareData')->name('data.software');
-    Route::get('level', 'LevelController@levelData')->name('data.level');
-    Route::get('course', 'CourseController@courseData')->name('data.course');
-    Route::get('course/{id}/detail', 'CourseController@courseDetailData')->name('data.course.detail');
-    Route::get('user', 'UserController@userData')->name('data.user');
+    Route::group(['prefix' => 'data'], function () {
+        Route::get('subject', 'SubjectController@subjectData')->name('data.subject');
+        Route::get('software', 'SoftwareController@softwareData')->name('data.software');
+        Route::get('level', 'LevelController@levelData')->name('data.level');
+        Route::get('course', 'CourseController@courseData')->name('data.course');
+        Route::get('course/{id}/detail', 'CourseController@courseDetailData')->name('data.course.detail');
+        Route::get('user', 'UserController@userData')->name('data.user');
+    });
+
+    Route::get('sitemap', function() {
+        $path = public_path('/sitemap.xml');
+        SitemapGenerator::create('http://idstack.net')->writeToFile($path);
+        return redirect()->route('admin');
+    });
 });
