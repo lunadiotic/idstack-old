@@ -26,7 +26,7 @@ Route::get('/series/{id}/episode/{ep}', 'HomeController@serieDetailShow')->name(
 Route::get('/about', 'HomeController@about')->name('idstack.about');
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', 'HomeController@admin')->name('admin');
         Route::resource('subject', 'SubjectController', ['names' => 'admin.subject']);
