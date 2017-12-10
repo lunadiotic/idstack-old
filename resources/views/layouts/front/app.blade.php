@@ -10,6 +10,7 @@
 	<title>IDStack - @yield('title', 'Belajar Berbagai Pemrograman | WeeeWork Class Programming')</title>
 	<meta name="description" content="Tutorial Coding Bahasa Indonesia, Kursus Online Pemrograman, IDStack" />
 	<meta name="keywords" content="study, learn, course, tutor, tutorial, teach, college, school, institute, teacher, instructor, php, laravel, web, mysql, html, css" />
+	<meta name="author" content="IDStack">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<!-- Fav and Touch Icons -->
