@@ -25,6 +25,8 @@ Route::get('/series/{id}', 'HomeController@serieDetail')->name('series.detail');
 Route::get('/series/{id}/episode/{ep}', 'HomeController@serieDetailShow')->name('series.detail.show');
 Route::get('/about', 'HomeController@about')->name('idstack.about');
 
+Route::get('/search', 'HomeController@search')->name('series.search');
+
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::group(['prefix' => 'admin'], function () {

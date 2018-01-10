@@ -8,8 +8,8 @@
 
 	<!-- Title Of Site -->
 	<title>IDStack - @yield('title', 'Belajar Berbagai Pemrograman | WeeeWork Class Programming')</title>
-	<meta name="description" content="Tutorial Coding Bahasa Indonesia, Kursus Online Pemrograman, IDStack" />
-	<meta name="keywords" content="study, learn, course, tutor, tutorial, teach, college, school, institute, teacher, instructor, php, laravel, web, mysql, html, css" />
+	<meta name="description" content="Tutorial Coding Bahasa Indonesia, Kursus Online Belajar Pemrograman, IDStack" />
+	<meta name="keywords" content="course, tutor, tutorial, html, css, javascript, php, laravel, codeigniter, nodejs, vue, angular, backend, frontend" />
 	<meta name="author" content="IDStack">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
@@ -270,8 +270,7 @@
 									<li><a href="{{ route('login') }}">Sign-in</a></li>
 									<li><a href="{{ route('register') }}">Sign-up</a></li>
 								@else
-									<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-													document.getElementById('logout-form').submit();">Sign-out</a></li>
+									<li></li>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 										{{ csrf_field() }}
 									</form>
@@ -325,52 +324,52 @@
 	@yield('scripts')
 
 	<script>
-!function ($) {
+	!function ($) {
 
-  $(function(){
+	$(function(){
 
-    var $window = $(window)
-    var $body   = $(document.body)
+		var $window = $(window)
+		var $body   = $(document.body)
 
-    var navHeight = $('.navbar').outerHeight(true) + 50
+		var navHeight = $('.navbar').outerHeight(true) + 50
 
-    $body.scrollspy({
-      target: '.scrollspy-sidebar',
-      offset: navHeight
-    })
+		$body.scrollspy({
+		target: '.scrollspy-sidebar',
+		offset: navHeight
+		})
 
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    })
+		$window.on('load', function () {
+		$body.scrollspy('refresh')
+		})
 
-    $('.scrollspy-container [href=#]').click(function (e) {
-      e.preventDefault()
-    })
+		$('.scrollspy-container [href=#]').click(function (e) {
+		e.preventDefault()
+		})
 
-    // back to top
-    setTimeout(function () {
-      var $sideBar = $('.scrollspy-sidebar')
+		// back to top
+		setTimeout(function () {
+		var $sideBar = $('.scrollspy-sidebar')
 
-      $sideBar.affix({
-        offset: {
-          top: function () {
-            var offsetTop      = $sideBar.offset().top
-            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-            var navOuterHeight = $('.scrollspy-nav').height()
+		$sideBar.affix({
+			offset: {
+			top: function () {
+				var offsetTop      = $sideBar.offset().top
+				var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+				var navOuterHeight = $('.scrollspy-nav').height()
 
-            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          }
-        , bottom: function () {
-            return (this.bottom = $('.scrollspy-footer').outerHeight(true))
-          }
-        }
-      })
-    }, 100)
-		
-  })
+				return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+			}
+			, bottom: function () {
+				return (this.bottom = $('.scrollspy-footer').outerHeight(true))
+			}
+			}
+		})
+		}, 100)
+			
+	})
 
-}(window.jQuery)
+	}(window.jQuery)
 
-</script>
+	</script>
 </body>
 </html>

@@ -36,6 +36,14 @@ class HomeController extends Controller
         return view('welcome', compact('courses'));
     }
 
+    public function search(Request $request)
+    {
+        $courses = Course::search($request->q)->paginate(5);
+        $subject = Subject::all();
+        $software = Software::all();
+        return view('pages.front.course.index', compact('courses', 'subject', 'software'));
+    }
+
     /**
      * Show all course content
      *

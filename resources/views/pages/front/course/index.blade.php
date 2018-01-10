@@ -48,6 +48,17 @@
                                         <button type="button" class="navbar-toggle btn btn-primary collapsed btn-responsive-filter" data-toggle="collapse" data-target="#responsive-filter-box">Search Again &amp; Filter</button>
                                         
                                         <div class="clear"></div>
+
+                                        <form action="{{ route('series.search') }}" method="GET">
+                                            <div class="input-group">
+                                                <input type="text" name="q" class="form-control placeholder-type-writter">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button"><i class="ion-ios-search-strong"></i></button>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </form>
+
+                                        </br>
                                         
                                         <div class="collapse navbar-collapse responsive-filter-box" id="responsive-filter-box">
                                         
@@ -128,108 +139,7 @@
                     
                             <div class="content-wrapper pt-20-xs">
 
-                                <div class="sorting-wrappper">
-                                    
-                                    <div class="sorting-form">
-                                    
-                                        <div id="change-search" class="collapse"> 
-                                        
-                                            <div class="change-search-wrapper">
-                                            
-                                                <div class="row gap-20">
-                                                
-                                                    <div class="col-xs-12 col-sm-10 col-md-10">
-                                                    
-                                                        <div class="row gap-0">
-                                                        
-                                                            <div class="col-xs-12 col-sm-7 col-md-7">
-                                                            
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control no-br" placeholder="Cari seri yang kamu suka">
-                                                                </div>
-                                                            
-                                                            </div>
-                                                            
-                                                            <div class="col-xs-12 col-sm-5 col-md-5">
-                                                            
-                                                                <div class="form-group">
-                                                                    <select class="select2-multi form-control" multiple data-placeholder="Semua Kategori" data-maximum-selection-length="3" style="width: 100%;">
-                                                                        <option>Semua Kategori</option>
-                                                                        @foreach($subject as $row)
-                                                                            <option value="{{ $row->id }}"> {{ $row->subject }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    
-                                                    </div>
-                                                    
-                                                    <div class="col-xs-12 col-sm-2 col-md-2 mt-10-xs">
-                                                        <button class="btn btn-block btn-primary btn-form"><i class="fa fa-search"></i></button>
-                                                    </div>
-                                                    
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    
-                                    <div class="sorting-header">
-                                    
-                                        <div class="row">
-                                        
-                                            {{--  <div class="col-xss-12 col-xs-12 col-sm-7 col-md-9">
-                                            
-                                                <h4>We found 86 courses for <strong>Computer</strong></h4>
-                                            </div>  --}}
-                                            
-                                            <div class="col-xss-12 col-xs-12 col-sm-5 col-md-3">
-                                                <button class="btn btn-primary btn-block btn-toggle collapsed btn-form btn-inverse btn-sm" data-toggle="collapse" data-target="#change-search"></button>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        
-                                    </div>
-                                    
-                                    <div class="sorting-content">
-                                    
-                                        {{--  <div class="row">
-                                        
-                                            <div class="col-xss-12 col-xs-9 col-sm-9">
-                                                <div class="sort-by-wrapper">
-                                                    <label class="sorting-label block-xs">Sort by: </label> 
-                                                    <div class="sorting-middle-holder">
-                                                        <ul class="sort-by">
-                                                            <li class="active up"><a href="#">Name <i class="fa fa-long-arrow-down"></i></a></li>
-                                                            <li><a href="#">Price</a></li>
-                                                            <li><a href="#">Location</a></li>
-                                                            <li><a href="#">Start Rating</a></li>
-                                                            <li><a href="#">User Rating</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-xss-12 col-xs-3 col-sm-3">
-                                                <div class="sort-by-wrapper for-layout-option">
-                                                    <label class="sorting-label">View as: </label> 
-                                                    <div class="sorting-middle-holder">
-                                                        <a href="course-list.html" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>
-                                                        <a href="course-grid.html" class="btn btn-sorting"><i class="fa fa-th-large"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>  --}}
-                                    
-                                    </div>
-
-                                </div>
+                                
                                 
                                 <div class="course-list-item-wrapper alt">
                             
@@ -291,7 +201,7 @@
                                                             <li><i class="fa fa-folder-open-o"></i><span class="block"> {{ $course->subjects()->first()->subject }}</span></li>
                                                             <li><i class="fa fa-pencil-square-o"></i><span class="block"> {{ $course->detail->count() }} Lessons</span></li>
                                                             <li><i class="fa fa-check-square-o"></i><span class="block"> {{ $course->level->level }}</span></li>
-                                                            <li class="btn-box"><a href="#" class="btn btn-primary btn-form btn-inverse">details</a></li>
+                                                            <li class="btn-box"><a href="{{ route('series.detail', $course->slug) }}" class="btn btn-primary btn-form btn-inverse">details</a></li>
                                                         </ul>
                                                         
                                                     </div>

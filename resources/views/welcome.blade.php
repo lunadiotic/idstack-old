@@ -14,12 +14,14 @@
 							<h2 class="text-center">What course will you like to learn?</h2>
 							<p class="lead text-center">Cari seri tutorial yang kamu butuhkan di sini.</p>
 
-							<div class="input-group">
-								<input type="text" class="form-control placeholder-type-writter">
-								<span class="input-group-btn">
-									<button class="btn btn-primary" type="button"><i class="ion-ios-search-strong"></i></button>
-								</span>
-							</div><!-- /input-group -->
+							<form action="{{ route('series.search') }}" method="GET">
+								<div class="input-group">
+									<input type="text" name="q" class="form-control placeholder-type-writter">
+									<span class="input-group-btn">
+										<button class="btn btn-primary" type="button"><i class="ion-ios-search-strong"></i></button>
+									</span>
+								</div><!-- /input-group -->
+							</form>
 						
 							<div class="featured-sm-wrapper">
 								
