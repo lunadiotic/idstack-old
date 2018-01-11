@@ -39,6 +39,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $courses = Course::search($request->q)->paginate(5);
+        $courses->appends(['q' => $request->q]);
         $subject = Subject::all();
         $software = Software::all();
         return view('pages.front.course.index', compact('courses', 'subject', 'software'));
@@ -51,7 +52,37 @@ class HomeController extends Controller
      */
     public function series()
     {
-        $courses = Course::orderBy('id', 'desc')->paginate(5);
+        $courses = Course::orderBy('updated_at', 'desc')->paginate(5);
+        $subject = Subject::all();
+        $software = Software::all();
+        return view('pages.front.course.index', compact('courses', 'subject', 'software'));
+    }
+
+    /**
+     * Show all courses content by Subject
+     *
+     * @param [type] $slug
+     * @return void
+     */
+    public function seriesBySubject($slug)
+    {
+        $data = Subject::where('slug', $slug)->first();
+        $courses = $data->courses()->orderBy('updated_at', 'desc')->paginate(5);
+        $subject = Subject::all();
+        $software = Software::all();
+        return view('pages.front.course.index', compact('courses', 'subject', 'software'));
+    }
+
+    /**
+     * Show all courses content by Software
+     *
+     * @param [type] $slug
+     * @return void
+     */
+    public function seriesBySoftware($slug)
+    {
+        $data = Software::where('slug', $slug)->first();
+        $courses = $data->courses()->orderBy('updated_at', 'desc')->paginate(5);
         $subject = Subject::all();
         $software = Software::all();
         return view('pages.front.course.index', compact('courses', 'subject', 'software'));

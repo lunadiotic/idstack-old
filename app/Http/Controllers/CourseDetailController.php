@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\CourseDetail;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,11 @@ class CourseDetailController extends Controller
         $request['slug'] = str_slug($request->title);
 
         CourseDetail::create($request->all());
+
+        $course = Course::find($request->course_id);
+        $course->update([
+            'total_video' => $course->detail->count()
+        ]); 
 
         return response()->json([
             'success' => true,

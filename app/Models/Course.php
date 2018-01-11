@@ -9,7 +9,8 @@ class Course extends Model
 {
     use Searchable;
 
-    protected $fillable = ['user_id', 'level_id', 'slug', 'title', 'desc', 'price', 'image'];
+    protected $fillable = ['user_id', 'level_id', 'slug', 'title', 'desc', 'price', 'image', 'total_video'];
+    protected $dates = ['created_at', 'updated_at'];
 
     public function detail()
     {
@@ -41,8 +42,18 @@ class Course extends Model
      *
      * @return void
      */
-    public function searchableAs()
+    // public function searchableAs()
+    // {
+    //     return 'courses_index';
+    // }
+
+    public function toSearchableArray()
     {
-        return 'courses_index';
+        return [
+             'id' => $this->id,
+             'slug' => $this->slug,
+             'title' => $this->title,
+             'desc' => $this->desc
+        ];
     }
 }

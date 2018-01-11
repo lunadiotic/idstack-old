@@ -22,6 +22,8 @@ Route::post('auth/activate/resend', 'Auth\ActivationResendController@resend');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/series', 'HomeController@series')->name('series');
 Route::get('/series/{id}', 'HomeController@serieDetail')->name('series.detail');
+Route::get('/series/subject/{slug}', 'HomeController@seriesBySubject')->name('series.subject');
+Route::get('/series/software/{slug}', 'HomeController@seriesBySoftware')->name('series.software');
 Route::get('/series/{id}/episode/{ep}', 'HomeController@serieDetailShow')->name('series.detail.show');
 Route::get('/about', 'HomeController@about')->name('idstack.about');
 

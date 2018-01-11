@@ -115,7 +115,7 @@
 						<div class="GridLex-grid-noGutter-equalHeight GridLex-grid-center">
 
                             @php
-                                $courses = $courses->orderBy('id', 'desc')->take(8)->get();
+                                $courses = $courses->orderBy('updated_at', 'desc')->take(8)->get();
                             @endphp
 
                             @if($courses->count())

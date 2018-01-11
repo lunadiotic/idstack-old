@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Software extends Model
 {
-    protected $fillable = ['software'];
+    protected $fillable = ['slug', 'software'];
 
     public function courses()
     {

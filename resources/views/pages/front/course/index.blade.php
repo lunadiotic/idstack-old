@@ -84,8 +84,8 @@
                                                                     @if($subject->count())
                                                                         @foreach($subject as $row)
                                                                             <div class="checkbox-block">
-                                                                                <input id="property_type-{{ $row->id }}" name="property_type" type="checkbox" class="checkbox"/>
-                                                                                <label class="" for="property_type-{{ $row->id }}">{{ $row->subject }} </label>
+                                                                                {{--  <input id="property_type-{{ $row->id }}" name="property_type" type="checkbox" class="checkbox"/>  --}}
+                                                                                <a href="{{ route('series.subject', $row->slug) }}">{{ $row->subject }}</a>
                                                                             </div>
                                                                         @endforeach
                                                                     @endif                                                                    
@@ -105,9 +105,9 @@
                                                                     @if($software->count())
                                                                         @foreach($software as $row)
                                                                             <div class="checkbox-block">
-                                                                                <input id="hotel_facilities-{{ $row->id }}" name="hotel_facilities" type="checkbox" class="checkbox"/>
-                                                                                <label class="" for="hotel_facilities-{{ $row->id }}">{{ $row->software }}</label>
-                                                                            </div>  
+                                                                                {{--  <input id="property_type-{{ $row->id }}" name="property_type" type="checkbox" class="checkbox"/>  --}}
+                                                                                <a href="{{ route('series.software', $row->slug) }}">{{ $row->software }}</a>
+                                                                            </div>
                                                                         @endforeach
                                                                     @endif 
                                                     

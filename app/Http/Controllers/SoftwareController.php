@@ -41,6 +41,7 @@ class SoftwareController extends Controller
             'software' => 'required|min:3|unique:software'
         ]);
 
+        $request['slug'] = str_slug($request->software, '-');
         Software::create($request->all());
 
         return response()->json([
@@ -84,6 +85,7 @@ class SoftwareController extends Controller
             'software' => 'required|min:3|unique:software,software,'.$software->id
         ]);
 
+        $request['slug'] = str_slug($request->software, '-');
         $software->update($request->all());
 
         return response()->json([
